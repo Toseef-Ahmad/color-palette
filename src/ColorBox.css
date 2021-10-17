@@ -1,0 +1,8 @@
+.ColorBox {
+  display: inline-block;
+  margin: 0 auto;
+  width: 20%;
+  height: 25%;
+  position: relative;
+  cursor: pointer;
+}

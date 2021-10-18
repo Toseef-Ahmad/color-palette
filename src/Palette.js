@@ -10,13 +10,15 @@ const Palette = (props) => {
   return (
     <>
       <div className="Palette-container">
-        <Slider
-          defaultValue={level}
-          min={100}
-          max={900}
-          step={100}
-          onAfterChange={(newValue) => setLevel(newValue)}
-        />
+        <div className="slider">
+          <Slider
+            defaultValue={level}
+            min={100}
+            max={900}
+            step={100}
+            onAfterChange={(newValue) => setLevel(newValue)}
+          />
+        </div>
         <div className="Palette-color">
           {colors[level].map((c) => (
             <ColorBox color={c} />

@@ -5,3 +5,22 @@
 .Palette-color {
   height: 90%;
 }
+
+.slider {
+  width: 30%;
+  padding: 10px 10px;
+}
+
+.rc-slider-track {
+  background: transparent;
+}
+
+.rc-slider-rail {
+  height: 7px;
+}
+
+.rc-slider-handle {
+  background: green;
+  border: none;
+  outline: none;
+}

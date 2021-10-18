@@ -6,7 +6,7 @@ const ColorBox = (props) => {
   const [isCopyed, setIsCopyed] = useState(false);
   const styles = {
     box: {
-      backgroundColor: props.color.color,
+      backgroundColor: props.color.hex,
     },
   };
 
@@ -27,7 +27,7 @@ const ColorBox = (props) => {
           ></div>
           <div className={`ColoBox-copy-text ${isCopyed && "show"}`}>
             <h1>COPYED!</h1>
-            <p>{props.color.color}</p>
+            <p>{props.color.hex}</p>
           </div>
           <div className="ColorBox-box-contant">
             <p>{props.color.name}</p>

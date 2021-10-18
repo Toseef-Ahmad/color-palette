@@ -38,6 +38,6 @@ function getScale(hexColor, numberOfColors) {
 }
 import seedColors from './seedColors';
 
-generatePalette(seedColors[4]);
+// generatePalette(seedColors[4]);
 
-// export { generatePalette };
+export { generatePalette };

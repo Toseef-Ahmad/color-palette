@@ -30,7 +30,7 @@
 
 .level {
   position: absolute;
-  left: 12%;
+  left: 170px;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 14px;
@@ -40,7 +40,7 @@
   width: 30%;
   padding: 10px 10px;
   position: absolute;
-  left: 16%;
+  left: 230px;
 }
 
 .rc-slider-track {

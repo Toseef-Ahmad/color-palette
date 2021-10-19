@@ -19,13 +19,13 @@ const ColorBox = (props) => {
 
   return (
     <>
-      <CopyToClipboard text={props.color.color} onCopy={() => copyOverlay()}>
+      <CopyToClipboard text={props.color.hex} onCopy={() => copyOverlay()}>
         <div className="ColorBox" style={styles.box}>
           <div
             className={`ColorBox-overlay ${isCopyed && 'show'}`}
             style={styles.box}
           ></div>
-          <div className={`ColoBox-copy-text ${isCopyed && "show"}`}>
+          <div className={`ColoBox-copy-text ${isCopyed && 'show'}`}>
             <h1>COPYED!</h1>
             <p>{props.color.hex}</p>
           </div>

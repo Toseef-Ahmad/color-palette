@@ -9,7 +9,7 @@ const ColorBox = (props) => {
       backgroundColor: props.color.hex,
     },
   };
-
+  const { formate } = props;
   const copyOverlay = () => {
     setIsCopyed(true);
     setTimeout(() => {
@@ -27,7 +27,7 @@ const ColorBox = (props) => {
           ></div>
           <div className={`ColoBox-copy-text ${isCopyed && 'show'}`}>
             <h1>COPYED!</h1>
-            <p>{props.color.hex}</p>
+            <p>{props.color[formate]}</p>
           </div>
           <div className="ColorBox-box-contant">
             <p>{props.color.name}</p>

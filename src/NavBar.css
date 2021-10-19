@@ -56,3 +56,10 @@
   border: none;
   outline: none;
 }
+
+.select-container {
+  width: 30%;
+  padding: 10px 10px;
+  position: absolute;
+  left: 1100px;
+}

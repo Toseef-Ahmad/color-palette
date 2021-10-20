@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 
 const Palette = (props) => {
   const [level, setLevel] = useState(500);
-  const { colors } = props.palette;
+  const { colors, paletteName, emoji } = props.palette;
   const [formate, setFormate] = useState('rgb');
   const handleAfterChange = (newLevel) => {
     setLevel(newLevel);
@@ -27,6 +27,10 @@ const Palette = (props) => {
             <ColorBox color={c} formate={formate} />
           ))}
         </div>
+        <footer className="palette-footer">
+          {paletteName}
+          <span className="emoji">{emoji}</span>
+        </footer>
       </div>
     </>
   );

@@ -1,0 +1,4 @@
+.paletteList {
+  display: flex;
+  flex-direction: column;
+}

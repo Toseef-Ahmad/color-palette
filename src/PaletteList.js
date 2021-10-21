@@ -9,7 +9,7 @@ const PaletteList = (props) => {
   return (
     <>
       <div className="PalatteList-container">
-        <MiniPalette />
+        <MiniPalette {...palette[1]} />
         <div className="paletteList">
           {palette.map((p) => {
             return <Link to={`/palette/${p.id}`}>{p.paletteName}</Link>;

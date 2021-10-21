@@ -4,21 +4,44 @@ import { withStyles } from '@mui/styles';
 
 const styles = {
   root: {
-    backgroundColor: 'green',
-    width: 200,
-    height: 200,
+    backgroundColor: 'white',
+    borderRadius: 5,
+    padding: '0.5rem',
+    position: 'relative',
+    border: '1px solid black',
   },
   color: {},
-  title: {},
+  colorBox: {},
+  title: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    magin: 0,
+    color: 'black',
+    paddingTop: '0.5rem',
+    position: 'relative',
+  },
+  emoji: {},
 };
-
 const MiniPalette = (props) => {
   const { classes } = props;
   return (
     <>
       <div className={classes.root}>
-        <div className={classes.color}></div>
-        <div className={classes.title}></div>
+        <div className={classes.color}>
+          {props.colors.map((c) => {
+            return (
+              <div
+                className={classes.colorBox}
+                style={{ backgroundColor: c.color }}
+              ></div>
+            );
+          })}
+        </div>
+        <div className={classes.title}>
+          {props.paletteName}
+          <span className={classes.emoji}>{props.emoji}</span>
+        </div>
       </div>
     </>
   );

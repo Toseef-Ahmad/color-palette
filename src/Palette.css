@@ -1,7 +1,6 @@
 .Palette-container {
   height: 100vh;
   width: 100vw;
-  /* margin-bottom: 30px; */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -31,14 +30,16 @@
 }
 
 .palette-footer {
-  /* position: absolute; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 5vh;
-  font-weight: bold;
+  font-weight: 400;
+  font-family: roboto, sans-serif;
 }
 
 .emoji {
+  font-family: roboto, sans-serif;
+  font-weight: bold;
   margin: 0 1rem;
 }

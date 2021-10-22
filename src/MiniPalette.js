@@ -13,23 +13,23 @@ const styles = {
   color: {},
   colorBox: {},
   title: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    magin: 0,
-    color: 'black',
-    paddingTop: '0.5rem',
-    position: 'relative',
+    // display: 'flex',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    // magin: 0,
+    // color: 'black',
+    // paddingTop: '0.5rem',
+    // position: 'relative',
   },
   emoji: {},
 };
 const MiniPalette = (props) => {
-  const { classes } = props;
+  const { classes, paletteName, colors, id, emoji } = props;
   return (
     <>
       <div className={classes.root}>
         <div className={classes.color}>
-          {props.colors.map((c) => {
+          {colors.map((c) => {
             return (
               <div
                 className={classes.colorBox}
@@ -39,8 +39,8 @@ const MiniPalette = (props) => {
           })}
         </div>
         <div className={classes.title}>
-          {props.paletteName}
-          <span className={classes.emoji}>{props.emoji}</span>
+          {paletteName}
+          <span className={classes.emoji}>{emoji}</span>
         </div>
       </div>
     </>

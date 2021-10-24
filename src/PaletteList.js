@@ -9,19 +9,27 @@ const styles = {
     backgroundColor: 'blue',
     height: '100vh',
     display: 'flex',
-    flexDirection: 'row',
-    // flexFlow: 'row wrap',
-    width: '100vw',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   container: {
-    // width: '50%',
+    width: '50%',
     display: 'flex',
-    // alignItems: 'flex-start',
-    flexDirection: 'row',
-    // flexWrap: 'wrap'
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    border: '1px solid white',
   },
-  nav: {},
-  palette: {},
+  nav: {
+    color: 'white'
+  },
+  palette: {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 30%)',
+    gridGap: '5%'
+
+  },
 };
 
 const PaletteList = (props) => {

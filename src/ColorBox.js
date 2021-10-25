@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ColorBox = (props) => {
   const [isCopyed, setIsCopyed] = useState(false);
+
   const styles = {
     box: {
       backgroundColor: props.color.hex,
@@ -21,7 +22,7 @@ const ColorBox = (props) => {
 
   return (
     <>
-      <CopyToClipboard text={props.color.hex} onCopy={() => copyOverlay()}>
+      <CopyToClipboard text={props.color[formate]} onCopy={() => copyOverlay()}>
         <div className="ColorBox" style={styles.box}>
           <div
             className={`ColorBox-overlay ${isCopyed && 'show'}`}
@@ -35,17 +36,22 @@ const ColorBox = (props) => {
             <p>{props.color.name}</p>
           </div>
           <button className="ColorBox-copy-button">COPY</button>
-          {console.log(props)}
-          <Link
-            to={`/palette/${props.paletteId}/${props.color.id}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="ColorBox-more-button">More</span>
-          </Link>
+          {props.showLinks && (
+            <Link
+              to={`/palette/${props.paletteId}/${props.color.id}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="ColorBox-more-button">More</span>
+            </Link>
+          )}
         </div>
       </CopyToClipboard>
     </>
   );
+};
+
+ColorBox.defaultProps = {
+  showLinks: true,
 };
 
 export default ColorBox;

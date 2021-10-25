@@ -1,6 +1,16 @@
 import React from 'react';
 import chroma from 'chroma-js';
 import ColorBox from './ColorBox';
+import { withStyles } from '@mui/styles';
+import './Palette.css';
+
+const styles = {
+  root: {
+    backgroundColor: 'green',
+    width: 200,
+    height: 200,
+  },
+};
 
 class SingleColorPalette extends React.Component {
   constructor(props) {
@@ -17,14 +27,23 @@ class SingleColorPalette extends React.Component {
         colors[key].filter((color) => color.id === colorId)
       );
     }
-    return shades;
+    return shades.slice(1);
   }
 
   render() {
-    return <>
-      <ColorBox color={this._shades[0]}/>
-    </>;
+    const { classes } = this.props;
+    return (
+      <>
+        <div className="Palette-container">
+          <div className="Palette-color">
+            {this._shades.map((shade) => (
+              <ColorBox color={shade} formate="rgba" showLinks={false} />
+            ))}
+          </div>
+        </div>
+      </>
+    );
   }
 }
 
-export default SingleColorPalette;
+export default withStyles(styles)(SingleColorPalette);

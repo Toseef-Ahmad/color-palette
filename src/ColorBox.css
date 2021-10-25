@@ -12,7 +12,8 @@
   align-items: center;
   text-align: center;
 } */
-.ColorBox-copy-button {
+.ColorBox-copy-button,
+.back-button {
   width: 100px;
   height: 30px;
   position: absolute;
@@ -30,6 +31,11 @@
   color: white;
   opacity: 0;
   transition: 100ms;
+  text-decoration: none;
+}
+
+.back-button {
+  opacity: 1;
 }
 
 .ColorBox-copy-button:hover {
@@ -120,4 +126,12 @@
 .ColoBox-copy-text p {
   font-weight: 100;
   font-size: 2rem;
+}
+
+.SingleColorPalette .ColorBox {
+  height: 50%;
+}
+
+.go-back.ColorBox {
+  background-color: black;
 }

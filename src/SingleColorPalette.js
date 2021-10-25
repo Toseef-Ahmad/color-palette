@@ -2,6 +2,7 @@ import React from 'react';
 import chroma from 'chroma-js';
 import ColorBox from './ColorBox';
 import { withStyles } from '@mui/styles';
+import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import './Palette.css';
@@ -48,14 +49,20 @@ class SingleColorPalette extends React.Component {
       <>
         <div className="Palette-container">
           <NavBar showSlider={false} handleChange={this.changeFormate} />
-          <div className="Palette-color">
+          <div className="SingleColorPalette Palette-color">
             {this._shades.map((shade) => (
               <ColorBox
+                key={shade.name}
                 color={shade}
                 formate={this.state.formate}
                 showLinks={false}
               />
             ))}
+            <div className="go-back ColorBox">
+              <Link to={`/palette/${palette.id}`} className="back-button">
+                GO BACK
+              </Link>
+            </div>
           </div>
           <Footer paletteName={palette.paletteName} emoji={palette.emoji} />
         </div>

@@ -14,6 +14,7 @@ const Palette = (props) => {
   const changeFormate = (formate) => {
     setFormate(formate);
   };
+
   return (
     <>
       <div className="Palette-container">
@@ -24,7 +25,11 @@ const Palette = (props) => {
         />
         <div className="Palette-color">
           {colors[level].map((c) => (
-            <ColorBox color={c} formate={formate} />
+            <ColorBox
+              color={c}
+              formate={formate}
+              paletteId={props.palette.id}
+            />
           ))}
         </div>
         <footer className="palette-footer">

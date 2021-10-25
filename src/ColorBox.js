@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const ColorBox = (props) => {
   const [isCopyed, setIsCopyed] = useState(false);
@@ -12,6 +12,7 @@ const ColorBox = (props) => {
   };
   const { formate } = props;
   const copyOverlay = () => {
+    console.log(props);
     setIsCopyed(true);
     setTimeout(() => {
       setIsCopyed(false);
@@ -25,9 +26,7 @@ const ColorBox = (props) => {
           <div
             className={`ColorBox-overlay ${isCopyed && 'show'}`}
             style={styles.box}
-          >
-
-          </div>
+          ></div>
           <div className={`ColoBox-copy-text ${isCopyed && 'show'}`}>
             <h1>COPYED!</h1>
             <p>{props.color[formate]}</p>
@@ -36,7 +35,11 @@ const ColorBox = (props) => {
             <p>{props.color.name}</p>
           </div>
           <button className="ColorBox-copy-button">COPY</button>
-          <Link to='/' onClick={e => e.stopPropagation()}>
+          {console.log(props)}
+          <Link
+            to={`/palette/${props.paletteId}/${props.color.id}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <span className="ColorBox-more-button">More</span>
           </Link>
         </div>

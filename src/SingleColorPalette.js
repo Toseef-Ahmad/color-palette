@@ -2,6 +2,7 @@ import React from 'react';
 import chroma from 'chroma-js';
 import ColorBox from './ColorBox';
 import { withStyles } from '@mui/styles';
+import NavBar from './NavBar';
 import './Palette.css';
 
 const styles = {
@@ -15,7 +16,17 @@ const styles = {
 class SingleColorPalette extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      formate: 'rgb',
+    };
     this._shades = this.colorShades(this.props.palette, this.props.colorId);
+    this.changeFormate = this.changeFormate.bind(this);
+  }
+
+  changeFormate(formate) {
+    this.setState({
+      formate: formate,
+    });
   }
 
   colorShades(palette, colorId) {
@@ -35,9 +46,14 @@ class SingleColorPalette extends React.Component {
     return (
       <>
         <div className="Palette-container">
+          <NavBar showSlider={false} handleChange={this.changeFormate} />
           <div className="Palette-color">
             {this._shades.map((shade) => (
-              <ColorBox color={shade} formate="rgba" showLinks={false} />
+              <ColorBox
+                color={shade}
+                formate={this.state.formate}
+                showLinks={false}
+              />
             ))}
           </div>
         </div>

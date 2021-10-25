@@ -22,6 +22,7 @@ const Palette = (props) => {
           handleAfterChange={handleAfterChange}
           level={level}
           handleChange={changeFormate}
+          showSlider={true}
         />
         <div className="Palette-color">
           {colors[level].map((c) => (

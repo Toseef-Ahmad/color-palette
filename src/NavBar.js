@@ -35,7 +35,7 @@ class NavBar extends React.Component {
 
   action = (
     <IconButton onClick={this.handleClose}>
-      <CloseIcon style={{ color: "white" }} />
+      <CloseIcon style={{ color: 'white' }} />
     </IconButton>
   );
 
@@ -47,18 +47,24 @@ class NavBar extends React.Component {
           <div className="logo">
             <Link to="/">reactcolorpicker</Link>
           </div>
-          <div className="level">
-            <p>Level {this.props.level}</p>
-          </div>
-          <div className="slider">
-            <Slider
-              defaultValue={this.props.level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={this.props.handleAfterChange}
-            />
-          </div>
+          {this.props.showSlider && (
+            <div className="level">
+              <p>Level {this.props.level}</p>
+            </div>
+          )}
+
+          {this.props.showSlider && (
+            <div className="slider">
+              <Slider
+                defaultValue={this.props.level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={this.props.handleAfterChange}
+              />
+            </div>
+          )}
+
           <div className="select-container">
             <Select value={this.state.formate} onChange={this.handleChange}>
               <MenuItem value="hex">HEX - #ffffff</MenuItem>

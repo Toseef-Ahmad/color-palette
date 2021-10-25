@@ -3,6 +3,7 @@ import chroma from 'chroma-js';
 import ColorBox from './ColorBox';
 import { withStyles } from '@mui/styles';
 import NavBar from './NavBar';
+import Footer from './Footer';
 import './Palette.css';
 
 const styles = {
@@ -42,7 +43,7 @@ class SingleColorPalette extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, palette } = this.props;
     return (
       <>
         <div className="Palette-container">
@@ -56,6 +57,7 @@ class SingleColorPalette extends React.Component {
               />
             ))}
           </div>
+          <Footer paletteName={palette.paletteName} emoji={palette.emoji} />
         </div>
       </>
     );

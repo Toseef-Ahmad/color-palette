@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class NavBar extends React.Component {
         <div className="NavBar-container">
           {console.log(this.props.level)}
           <div className="logo">
-            <a href="#">reactcolorpicker</a>
+            <Link to="/">reactcolorpicker</Link>
           </div>
           <div className="level">
             <p>Level {this.props.level}</p>

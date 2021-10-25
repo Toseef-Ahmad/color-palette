@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
+import chroma from 'chroma-js';
 
 const ColorBox = (props) => {
   const [isCopyed, setIsCopyed] = useState(false);
-
+  const isDark = chroma(props.color.hex).luminance() > 0.5;
+  console.log(isDark);
   const styles = {
     box: {
       backgroundColor: props.color.hex,
@@ -33,7 +35,9 @@ const ColorBox = (props) => {
             <p>{props.color[formate]}</p>
           </div>
           <div className="ColorBox-box-contant">
-            <p>{props.color.name}</p>
+            <p style={{ color: isDark ? 'black' : 'white' }}>
+              {props.color.name}
+            </p>
           </div>
           <button className="ColorBox-copy-button">COPY</button>
           {props.showLinks && (
@@ -41,7 +45,12 @@ const ColorBox = (props) => {
               to={`/palette/${props.paletteId}/${props.color.id}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <span className="ColorBox-more-button">More</span>
+              <span
+                className="ColorBox-more-button"
+                style={{ color: isDark ? 'black' : 'white' }}
+              >
+                More
+              </span>
             </Link>
           )}
         </div>

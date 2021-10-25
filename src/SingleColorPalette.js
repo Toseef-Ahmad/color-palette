@@ -56,6 +56,7 @@ class SingleColorPalette extends React.Component {
                 color={shade}
                 formate={this.state.formate}
                 showLinks={false}
+                height={'50%'}
               />
             ))}
             <div className="go-back ColorBox">

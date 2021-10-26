@@ -19,6 +19,13 @@ export default {
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
+    color: 'white',
+    '& a': {
+      color: 'white',
+      textDecoration: 'none',
+      alignItems: 'center',
+      marginTop: 4,
+    }
   },
   palette: {
     boxSizing: 'border-box',

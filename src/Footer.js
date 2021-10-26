@@ -10,6 +10,11 @@ const styles = {
     fontWeight: 400,
     fonFamily: 'roboto, sans-serif',
   },
+  emoji: {
+    fontFamily: 'roboto, sans-serif',
+    fontWeight: 'bold',
+    margin: '0 1rem',
+  },
 };
 
 const Footer = (props) => {
@@ -19,7 +24,7 @@ const Footer = (props) => {
     <>
       <footer className={classes.root}>
         {paletteName}
-        <span className="emoji">{emoji}</span>
+        <span className={classes.emoji}>{emoji}</span>
       </footer>
     </>
   );

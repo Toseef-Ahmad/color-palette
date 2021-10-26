@@ -1,13 +1,73 @@
 import React from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import './NavBar.css';
+// import './NavBar.css';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@mui/styles';
+
+const styles = {
+  container: {
+    display: 'flex',
+    height: '40px',
+    width: '100%',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  logo: {
+    width: '150px',
+    backgroundColor: '#eceff1',
+    height: '100%',
+    position: 'absolute',
+    zIndex: 1,
+    '& a': {
+      display: 'block',
+      marginTop: '5px',
+      textDecoration: 'none',
+      color: 'black',
+      textAlign: 'center',
+      position: 'absolute',
+      left: '15%',
+      top: '10%',
+      fontFamily: 'Roboto, sans-serif',
+    },
+  },
+  level: {
+    position: 'absolute',
+    left: '170px',
+    fontFamily: 'Roboto, sans-serif',
+    fontWeight: 100,
+    fontSize: '14px',
+  },
+  slider: {
+    width: '30%',
+    padding: '10px 10px',
+    position: 'absolute',
+    left: '230px',
+    '& .rc-slider-rail': {
+      height: 7,
+    },
+    '& .rc-slider-track': {
+      background: 'transparent',
+    },
+    '& .rc-slider-handle': {
+      background: 'green',
+      border: 'none',
+      outline: 'none',
+    },
+  },
+
+  selectContainer: {
+    width: '30%',
+    padding: '10px 10px',
+    position: 'absolute',
+    left: '1100px',
+  },
+};
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -40,21 +100,22 @@ class NavBar extends React.Component {
   );
 
   render() {
+    const { classes } = this.props;
     return (
       <>
-        <div className="NavBar-container">
+        <div className={classes.container}>
           {console.log(this.props.level)}
-          <div className="logo">
+          <div className={classes.logo}>
             <Link to="/">reactcolorpicker</Link>
           </div>
           {this.props.showSlider && (
-            <div className="level">
+            <div className={classes.level}>
               <p>Level {this.props.level}</p>
             </div>
           )}
 
           {this.props.showSlider && (
-            <div className="slider">
+            <div className={classes.slider}>
               <Slider
                 defaultValue={this.props.level}
                 min={100}
@@ -65,7 +126,7 @@ class NavBar extends React.Component {
             </div>
           )}
 
-          <div className="select-container">
+          <div className={classes.selectContainer}>
             <Select value={this.state.formate} onChange={this.handleChange}>
               <MenuItem value="hex">HEX - #ffffff</MenuItem>
               <MenuItem value="rgb">RGB - rgb(255, 255, 255)</MenuItem>
@@ -87,4 +148,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withStyles(styles)(NavBar);

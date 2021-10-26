@@ -1,4 +1,4 @@
-.Palette-container {
+/* .Palette-container {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -8,9 +8,9 @@
 
 .Palette-color {
   height: 90%;
-}
+} */
 
-.slider {
+/* .slider {
   width: 30%;
   padding: 10px 10px;
 }
@@ -27,19 +27,19 @@
   background: green;
   border: none;
   outline: none;
-}
+} */
 
-.palette-footer {
+/* .palette-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 5vh;
   font-weight: 400;
   font-family: roboto, sans-serif;
-}
+} */
 
-.emoji {
+/* .emoji {
   font-family: roboto, sans-serif;
   font-weight: bold;
   margin: 0 1rem;
-}
+} */

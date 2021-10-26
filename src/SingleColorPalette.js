@@ -5,50 +5,8 @@ import { withStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import styles from './styles/SingleColorPaletteStyles';
 import './Palette.css';
-
-const styles = {
-  container: {
-    height: '100vh',
-    width: '100vw',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  color: {
-    height: '90%',
-  },
-  colorBox: {
-    display: 'inline-block',
-    margin: '0 auto',
-    width: '20%',
-    height: '50%',
-    position: 'relative',
-    cursor: 'pointer',
-    marginBottom: '-4px',
-    opacity: 1,
-    backgroundColor: 'black',
-  },
-  goBack: {
-    width: '100px',
-    height: '30px',
-    position: 'absolute',
-    display: 'inline-block',
-    top: '50%',
-    left: '50%',
-    marginLeft: '-50px',
-    marginTop: '-15px',
-    textAlign: 'center',
-    outline: 'none',
-    border: 'none',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    fontSize: '1rem',
-    lineHeight: '30px',
-    opacity: 1,
-    textDecoration: 'none',
-    color: 'white',
-  },
-};
 
 class SingleColorPalette extends React.Component {
   constructor(props) {

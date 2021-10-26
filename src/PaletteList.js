@@ -2,45 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import { withStyles } from '@mui/styles';
+import styles from './styles/PaletteListStyles';
 // import './PaletteList.css';
-
-const styles = {
-  root: {
-    backgroundColor: 'blue',
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
-  container: {
-    width: '50%',
-    display: 'flex',
-    alignItems: 'flex-start',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    // height: '100vh',
-    // border: '1px solid white',
-  },
-  nav: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  palette: {
-    boxSizing: 'border-box',
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 30%)',
-    gridGap: '5%',
-  },
-};
 
 const PaletteList = (props) => {
   const { palette, classes } = props;
   const goToPalette = (id) => {
     console.log(props.history);
     props.history.push(`/palette/${id}`);
-  }
+  };
   return (
     <>
       <div className={classes.root}>
@@ -52,7 +22,7 @@ const PaletteList = (props) => {
             {palette.map((p) => {
               return (
                 <MiniPalette {...p} handleClick={() => goToPalette(p.id)} />
-              )
+              );
             })}
           </div>
         </div>

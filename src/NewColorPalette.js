@@ -9,11 +9,13 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { ChromePicker } from 'react-color';
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -60,10 +62,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+const ButtonContainer = styled('div')({
+  color: 'darkslategray',
+  backgroundColor: 'aliceblue',
+  padding: 8,
+  borderRadius: 4,
+});
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [color, setColor] = React.useState('purple');
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -106,14 +114,26 @@ export default function PersistentDrawerLeft() {
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+            <ChevronLeftIcon />
           </IconButton>
         </DrawerHeader>
         <Divider />
+        <Typography variant="h4">Design Your Paltte</Typography>
+        <ButtonContainer>
+          <Button variant="contained" color="error">
+            CLEAR PALETTE
+          </Button>
+          <Button variant="contained" color="primary">
+            RANDOM PALETTE
+          </Button>
+        </ButtonContainer>
+        <ChromePicker
+          color={color}
+          onChangeComplete={(newColor) => setColor(newColor)}
+        />
+        <Button variant="contained" color="primary">
+          ADD COLOR
+        </Button>
       </Drawer>
     </Box>
   );

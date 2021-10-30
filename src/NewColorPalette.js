@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import DragableColorBox from './DragableColorBox';
 import { ChromePicker } from 'react-color';
 
 const drawerWidth = 400;
@@ -69,7 +70,9 @@ const ButtonContainer = styled('div')({
   borderRadius: 4,
 });
 
-const ColorsList = styled('div')({});
+const ColorsList = styled('div')({
+  height: 'calc(100vh - 16vh)',
+});
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
@@ -155,7 +158,9 @@ export default function PersistentDrawerLeft() {
       <Main>
         <DrawerHeader />
         <ColorsList>
-          <ul>{colors.map(color => <li style={{backgroundColor: color}}>{color}</li>)}</ul>
+          {colors.map((color) => (
+            <DragableColorBox color={color} />
+          ))}
         </ColorsList>
       </Main>
     </Box>

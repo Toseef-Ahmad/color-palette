@@ -5,6 +5,7 @@ import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -79,20 +80,31 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('purple');
   const [colors, setColors] = React.useState([]);
-
+  const [colorName, setColorName] = React.useState('');
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
   const addNewColor = () => {
+    const newColor = {
+      color: color,
+      colorName: colorName,
+    };
     setColors((oldColor) => {
-      return [...oldColor, color];
+      return [...oldColor, newColor];
     });
-    console.log(colors);
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleChangeColorName = ({ target }) => {
+    setColorName(target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log('handleSubmit');
   };
 
   return (
@@ -146,20 +158,29 @@ export default function PersistentDrawerLeft() {
           color={color}
           onChangeComplete={(newColor) => setColor(newColor.hex)}
         />
+        <TextField
+          id="filled-basic"
+          label="Filled"
+          variant="filled"
+          value={colorName}
+          onChange={() => setColorName(event.target.value)}
+        />
+
         <Button
           variant="contained"
           color="primary"
+          type="submit"
           style={{ backgroundColor: color }}
           onClick={addNewColor}
         >
           ADD COLOR
         </Button>
       </Drawer>
-      <Main>
+      <Main open={open}>
         <DrawerHeader />
         <ColorsList>
-          {colors.map((color) => (
-            <DragableColorBox color={color} />
+          {colors.map(({ color, colorName }) => (
+            <DragableColorBox color={color} colorName={colorName} />
           ))}
         </ColorsList>
       </Main>

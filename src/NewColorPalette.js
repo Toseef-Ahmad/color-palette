@@ -75,7 +75,7 @@ const ColorsList = styled('div')({
   height: 'calc(100vh - 16vh)',
 });
 
-export default function PersistentDrawerLeft() {
+export default function NewColorPalette(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('purple');
@@ -88,7 +88,7 @@ export default function PersistentDrawerLeft() {
   const addNewColor = () => {
     const newColor = {
       color: color,
-      colorName: colorName,
+      name: colorName,
     };
     setColors((oldColor) => {
       return [...oldColor, newColor];
@@ -103,14 +103,20 @@ export default function PersistentDrawerLeft() {
     setColorName(target.value);
   };
 
-  const handleSubmit = () => {
-    console.log('handleSubmit');
+  const savePalette = () => {
+    const newPalette = {
+      paletteName: 'New Palette',
+      id: 'new-palette',
+      colors: colors,
+    };
+    props.savePalette(newPalette);
+    props.history.push('/');
   };
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} color="default">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -124,6 +130,9 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             Persistent drawer
           </Typography>
+          <Button variant="contained" onClick={savePalette}>
+            SAVE PALETTE
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -179,8 +188,8 @@ export default function PersistentDrawerLeft() {
       <Main open={open}>
         <DrawerHeader />
         <ColorsList>
-          {colors.map(({ color, colorName }) => (
-            <DragableColorBox color={color} colorName={colorName} />
+          {colors.map(({ color, name }) => (
+            <DragableColorBox color={color} colorName={name} />
           ))}
         </ColorsList>
       </Main>

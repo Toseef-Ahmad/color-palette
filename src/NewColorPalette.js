@@ -126,12 +126,11 @@ export default function NewColorPalette(props) {
 
   const addRandomColor = () => {
     const randomPalette =
-      props.palettes[0]
-        .colors;
+      props.palettes[Math.floor(Math.random() * props.palettes.length)].colors;
     const randomColor =
       randomPalette[Math.floor(Math.random() * randomPalette.length)];
     console.log(randomColor);
-    setColors([...colors, randomColor]);
+    setColors(() => [...colors, randomColor]);
   };
 
   const savePalette = () => {

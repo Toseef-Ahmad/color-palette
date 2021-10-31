@@ -121,7 +121,7 @@ export default function NewColorPalette(props) {
         props.savePalette(newPalette);
         props.history.push('/');
       } else {
-        alert('Palette is Empty')
+        alert('Palette is Empty');
       }
     } else {
       alert('Chose Unique Palette Name');

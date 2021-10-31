@@ -83,7 +83,9 @@ export default function NewColorPalette(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('purple');
-  const [colors, setColors] = React.useState([]);
+  const [colors, setColors] = React.useState(
+    props.palettes[Math.floor(Math.random() * props.palettes.length)].colors
+  );
   const [colorName, setColorName] = React.useState('');
   const [paletteName, setPaletteName] = React.useState('');
 
@@ -116,6 +118,20 @@ export default function NewColorPalette(props) {
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
     setColors(arrayMove(colors, oldIndex, newIndex));
+  };
+
+  const clearPalette = () => {
+    setColors([]);
+  };
+
+  const addRandomColor = () => {
+    const randomPalette =
+      props.palettes[0]
+        .colors;
+    const randomColor =
+      randomPalette[Math.floor(Math.random() * randomPalette.length)];
+    console.log(randomColor);
+    setColors([...colors, randomColor]);
   };
 
   const savePalette = () => {
@@ -190,10 +206,10 @@ export default function NewColorPalette(props) {
         <Divider />
         <Typography variant="h4">Design Your Paltte</Typography>
         <ButtonContainer>
-          <Button variant="contained" color="error">
+          <Button variant="contained" color="error" onClick={clearPalette}>
             CLEAR PALETTE
           </Button>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={addRandomColor}>
             RANDOM PALETTE
           </Button>
         </ButtonContainer>

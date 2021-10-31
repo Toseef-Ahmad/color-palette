@@ -17,6 +17,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DragableColorBox from './DragableColorBox';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
+import { v4 as uuidv4 } from 'uuid';
 
 const drawerWidth = 400;
 
@@ -92,6 +93,7 @@ export default function NewColorPalette(props) {
     const newColor = {
       color: color,
       name: colorName,
+      id: uuidv4(),
     };
     setColors((oldColor) => {
       return [...oldColor, newColor];
@@ -104,6 +106,10 @@ export default function NewColorPalette(props) {
 
   const handleChangeColorName = ({ target }) => {
     setColorName(target.value);
+  };
+
+  const handleClick = (id) => {
+    setColors((oldColors) => oldColors.filter((color) => color.id !== id));
   };
 
   const savePalette = () => {
@@ -211,8 +217,13 @@ export default function NewColorPalette(props) {
       <Main open={open}>
         <DrawerHeader />
         <ColorsList>
-          {colors.map(({ color, name }) => (
-            <DragableColorBox color={color} colorName={name} />
+          {colors.map(({ color, name, id }) => (
+            <DragableColorBox
+              color={color}
+              colorName={name}
+              id={id}
+              handleClick={handleClick}
+            />
           ))}
         </ColorsList>
       </Main>

@@ -18,14 +18,14 @@ export default function App() {
   const savePalette = (newPalette) => {
     setPalettes((oldPalettes) => [...oldPalettes, newPalette]);
   };
-  
+
   return (
     <div>
       <Switch>
         <Route
           path="/palette/new"
           render={(routeParams) => (
-            <NewColorPalette savePalette={savePalette} {...routeParams} />
+            <NewColorPalette savePalette={savePalette} {...routeParams} palettes={palettes}/>
           )}
         ></Route>
         <Route

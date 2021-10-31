@@ -15,6 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DragableColorBox from './DragableColorBox';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 
 const drawerWidth = 400;
@@ -81,6 +82,8 @@ export default function NewColorPalette(props) {
   const [color, setColor] = React.useState('purple');
   const [colors, setColors] = React.useState([]);
   const [colorName, setColorName] = React.useState('');
+  const [paletteName, setPaletteName] = React.useState('');
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -105,12 +108,24 @@ export default function NewColorPalette(props) {
 
   const savePalette = () => {
     const newPalette = {
-      paletteName: 'New Palette',
-      id: 'new-palette',
+      paletteName: paletteName,
+      id: paletteName.toLowerCase().replace(/ /g, '-'),
       colors: colors,
     };
-    props.savePalette(newPalette);
-    props.history.push('/');
+    const isUnique = props.palettes.every(
+      (palette) => palette.paletteName !== paletteName
+    );
+
+    if (isUnique && paletteName !== '') {
+      if (colors.length !== 0) {
+        props.savePalette(newPalette);
+        props.history.push('/');
+      } else {
+        alert('Palette is Empty')
+      }
+    } else {
+      alert('Chose Unique Palette Name');
+    }
   };
 
   return (
@@ -130,6 +145,13 @@ export default function NewColorPalette(props) {
           <Typography variant="h6" noWrap component="div">
             Persistent drawer
           </Typography>
+          <TextField
+            variant="filled"
+            id="filled-basic"
+            label="Enter Palette Name"
+            value={paletteName}
+            onChange={() => setPaletteName(event.target.value)}
+          ></TextField>
           <Button variant="contained" onClick={savePalette}>
             SAVE PALETTE
           </Button>
@@ -167,6 +189,7 @@ export default function NewColorPalette(props) {
           color={color}
           onChangeComplete={(newColor) => setColor(newColor.hex)}
         />
+
         <TextField
           id="filled-basic"
           label="Filled"

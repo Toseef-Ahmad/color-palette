@@ -19,8 +19,9 @@ import DragableColorList from './DragableColorList';
 import { arrayMove } from 'react-sortable-hoc';
 import NewColorPaletteNav from './NewColorPaletteNav';
 import NewColorPaletteColorPicker from './NewColorPaletteColorPicker';
+import { withStyles } from '@mui/styles';
 
-const drawerWidth = 400;
+const drawerWidth = 300;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -41,6 +42,14 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   })
 );
 
+const ColorPickerContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+});
+
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -50,18 +59,28 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-const ButtonContainer = styled('div')({
-  color: 'darkslategray',
-  backgroundColor: 'aliceblue',
-  padding: 8,
-  borderRadius: 4,
-});
+const styles = {
+  colorPickerContainer: {
+    color: 'darkslategray',
+    backgroundColor: 'aliceblue',
+    padding: 8,
+    borderRadius: 4,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    '& button': {
+      fontSize: 11,
+      margin: 5,
+    },
+  },
+};
 
 const ColorsList = styled('div')({
   height: 'calc(100vh - 16vh)',
 });
 
-export default function NewColorPalette(props) {
+function NewColorPalette(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('purple');
@@ -69,13 +88,13 @@ export default function NewColorPalette(props) {
     props.palettes[Math.floor(Math.random() * props.palettes.length)].colors
   );
   const [colorName, setColorName] = React.useState('');
+  const { classes } = props;
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
   const addNewColor = (newColor) => {
-    console.log(colors);
     setColors((oldColor) => {
       return [...oldColor, newColor];
     });
@@ -148,38 +167,24 @@ export default function NewColorPalette(props) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Typography variant="h4">Design Your Paltte</Typography>
-        <ButtonContainer>
-          <Button variant="contained" color="error" onClick={clearPalette}>
-            CLEAR PALETTE
-          </Button>
-          <Button variant="contained" color="primary" onClick={addRandomColor}>
-            RANDOM PALETTE
-          </Button>
-        </ButtonContainer>
-        {/* <ChromePicker
-          color={color}
-          onChangeComplete={(newColor) => setColor(newColor.hex)}
-        />
 
-        <TextField
-          id="filled-basic"
-          label="Filled"
-          variant="filled"
-          value={colorName}
-          onChange={() => setColorName(event.target.value)}
-        />
+        <ColorPickerContainer>
+          <Typography variant="h4">Design Your Paltte</Typography>
+          <div className={classes.colorPickerContainer}>
+            <Button variant="contained" color="error" onClick={clearPalette}>
+              CLEAR PALETTE
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={addRandomColor}
+            >
+              RANDOM PALETTE
+            </Button>
+          </div>
 
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          style={{ backgroundColor: color }}
-          onClick={addNewColor}
-        >
-          ADD COLOR
-        </Button> */}
-        <NewColorPaletteColorPicker addNewColor={addNewColor} />
+          <NewColorPaletteColorPicker addNewColor={addNewColor} />
+        </ColorPickerContainer>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
@@ -195,3 +200,5 @@ export default function NewColorPalette(props) {
     </Box>
   );
 }
+
+export default withStyles(styles)(NewColorPalette);

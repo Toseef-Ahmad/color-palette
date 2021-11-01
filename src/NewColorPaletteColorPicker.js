@@ -3,10 +3,26 @@ import { ChromePicker } from 'react-color';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from 'uuid';
+import { withStyles } from '@mui/styles';
 
-const NewColorPaletteColorPicker = (props) => {
+const styles = {
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& button': {
+      marginTop: 10,
+      width: '100%',
+      fontSize: 20,
+      padding: 15,
+    },
+  },
+};
+
+const NewColorPaletteColorPicker = withStyles(styles)((props) => {
   const [color, setColor] = React.useState('maroon');
   const [colorName, setColorName] = React.useState('maroon');
+  const { classes } = props;
 
   const handleClick = () => {
     const newColor = {
@@ -19,7 +35,7 @@ const NewColorPaletteColorPicker = (props) => {
 
   return (
     <>
-      <div>
+      <div className={classes.root}>
         <ChromePicker
           color={color}
           onChangeComplete={(newColor) => setColor(newColor.hex)}
@@ -39,12 +55,13 @@ const NewColorPaletteColorPicker = (props) => {
           type="submit"
           style={{ backgroundColor: color }}
           onClick={handleClick}
+          className={classes.addButton}
         >
           ADD COLOR
         </Button>
       </div>
     </>
   );
-};
+});
 
 export default NewColorPaletteColorPicker;

@@ -10,7 +10,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@mui/styles';
 
-const drawerWidth = 400;
+const drawerWidth = 300;
 
 const styles = {
   navBarButtons: {

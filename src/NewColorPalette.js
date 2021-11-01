@@ -18,6 +18,7 @@ import { v4 as uuidv4 } from 'uuid';
 import DragableColorList from './DragableColorList';
 import { arrayMove } from 'react-sortable-hoc';
 import NewColorPaletteNav from './NewColorPaletteNav';
+import NewColorPaletteColorPicker from './NewColorPaletteColorPicker';
 
 const drawerWidth = 400;
 
@@ -90,12 +91,8 @@ export default function NewColorPalette(props) {
     setOpen(true);
   };
 
-  const addNewColor = () => {
-    const newColor = {
-      color: color,
-      name: colorName,
-      id: uuidv4(),
-    };
+  const addNewColor = (newColor) => {
+    console.log(colors);
     setColors((oldColor) => {
       return [...oldColor, newColor];
     });
@@ -205,7 +202,7 @@ export default function NewColorPalette(props) {
             RANDOM PALETTE
           </Button>
         </ButtonContainer>
-        <ChromePicker
+        {/* <ChromePicker
           color={color}
           onChangeComplete={(newColor) => setColor(newColor.hex)}
         />
@@ -226,7 +223,8 @@ export default function NewColorPalette(props) {
           onClick={addNewColor}
         >
           ADD COLOR
-        </Button>
+        </Button> */}
+        <NewColorPaletteColorPicker addNewColor={addNewColor} />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

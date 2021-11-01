@@ -4,22 +4,20 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DragableColorBox from './DragableColorBox';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 import { v4 as uuidv4 } from 'uuid';
 import DragableColorList from './DragableColorList';
 import { arrayMove } from 'react-sortable-hoc';
+import NewColorPaletteNav from './NewColorPaletteNav';
 
 const drawerWidth = 400;
 
@@ -87,7 +85,6 @@ export default function NewColorPalette(props) {
     props.palettes[Math.floor(Math.random() * props.palettes.length)].colors
   );
   const [colorName, setColorName] = React.useState('');
-  const [paletteName, setPaletteName] = React.useState('');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -129,35 +126,23 @@ export default function NewColorPalette(props) {
       props.palettes[Math.floor(Math.random() * props.palettes.length)].colors;
     const randomColor =
       randomPalette[Math.floor(Math.random() * randomPalette.length)];
-    console.log(randomColor);
-    setColors(() => [...colors, randomColor]);
+    setColors(() => [...colors, { ...randomColor, id: uuidv4() }]);
   };
 
-  const savePalette = () => {
+  const savePalette = (paletteName) => {
     const newPalette = {
       paletteName: paletteName,
       id: paletteName.toLowerCase().replace(/ /g, '-'),
       colors: colors,
     };
-    const isUnique = props.palettes.every(
-      (palette) => palette.paletteName !== paletteName
-    );
-
-    if (isUnique && paletteName !== '') {
-      if (colors.length !== 0) {
-        props.savePalette(newPalette);
-        props.history.push('/');
-      } else {
-        alert('Palette is Empty');
-      }
-    } else {
-      alert('Chose Unique Palette Name');
-    }
+    props.savePalette(newPalette);
+    props.history.push('/');
   };
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      {/* <CssBaseline />
       <AppBar position="fixed" open={open} color="default">
         <Toolbar>
           <IconButton
@@ -183,7 +168,15 @@ export default function NewColorPalette(props) {
             SAVE PALETTE
           </Button>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
+      <NewColorPaletteNav
+        open={open}
+        savePalette={savePalette}
+        AppBar={AppBar}
+        handleDrawerOpen={handleDrawerOpen}
+        palettes={props.palettes}
+        colors={colors}
+      />
       <Drawer
         sx={{
           width: drawerWidth,

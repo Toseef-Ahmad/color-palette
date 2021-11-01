@@ -12,7 +12,7 @@ const styles = {
     height: '25%',
     position: 'relative',
     cursor: 'pointer',
-    marginBottom: '-3.5px',
+    marginBottom: '-7px',
     '&:hover svg': {
       color: 'white',
       transform: 'scale(2)',

@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { styled, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@mui/styles';
+import NewColorPaletteMetaForm from './NewColorPaletteMetaForm';
 
 const drawerWidth = 300;
 
@@ -21,6 +22,10 @@ const styles = {
     padding: 10,
     '& button': {
       margin: 10,
+    },
+    '& a': {
+      textDecoration: 'none',
+      color: 'white',
     },
   },
 };
@@ -90,21 +95,10 @@ const NewColorPaletteNav = ({
             </Typography>
           </Toolbar>
           <div className={classes.navBarButtons}>
-            <TextField
-              variant="filled"
-              id="filled-basic"
-              label="Enter Palette Name"
-              value={paletteName}
-              onChange={() => setPaletteName(event.target.value)}
-            ></TextField>
-
-            <Button variant="contained" color="error">
-              <Link to="/">GO BACK</Link>
-            </Button>
-
-            <Button variant="contained" onClick={handleSavePalette}>
-              SAVE PALETTE
-            </Button>
+            <NewColorPaletteMetaForm
+              paletteName={paletteName}
+              handleSavePalette={handleSavePalette}
+            />
           </div>
         </AppBar>
       </div>

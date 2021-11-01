@@ -6,14 +6,52 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { styled, useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import { withStyles } from '@mui/styles';
+
+const drawerWidth = 400;
+
+const styles = {
+  navBarButtons: {
+    display: 'flex',
+    height: 64,
+    alignItems: 'center',
+    // justifyContent: 'space-between',
+    padding: 10,
+    '& button': {
+      margin: 10,
+    },
+  },
+};
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
 
 const NewColorPaletteNav = ({
   open,
   savePalette,
-  AppBar,
   handleDrawerOpen,
   palettes,
-  colors
+  colors,
+  classes,
 }) => {
   const [paletteName, setPaletteName] = React.useState('');
 
@@ -48,8 +86,10 @@ const NewColorPaletteNav = ({
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Persistent drawer
+              COLOR PALETTE
             </Typography>
+          </Toolbar>
+          <div className={classes.navBarButtons}>
             <TextField
               variant="filled"
               id="filled-basic"
@@ -57,14 +97,19 @@ const NewColorPaletteNav = ({
               value={paletteName}
               onChange={() => setPaletteName(event.target.value)}
             ></TextField>
+
+            <Button variant="contained" color="error">
+              <Link to="/">GO BACK</Link>
+            </Button>
+
             <Button variant="contained" onClick={handleSavePalette}>
               SAVE PALETTE
             </Button>
-          </Toolbar>
+          </div>
         </AppBar>
       </div>
     </>
   );
 };
 
-export default NewColorPaletteNav;
+export default withStyles(styles)(NewColorPaletteNav);

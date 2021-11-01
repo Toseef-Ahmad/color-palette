@@ -41,23 +41,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   })
 );
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -139,37 +122,9 @@ export default function NewColorPalette(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      {/* <CssBaseline />
-      <AppBar position="fixed" open={open} color="default">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
-          <TextField
-            variant="filled"
-            id="filled-basic"
-            label="Enter Palette Name"
-            value={paletteName}
-            onChange={() => setPaletteName(event.target.value)}
-          ></TextField>
-          <Button variant="contained" onClick={savePalette}>
-            SAVE PALETTE
-          </Button>
-        </Toolbar>
-      </AppBar> */}
       <NewColorPaletteNav
         open={open}
         savePalette={savePalette}
-        AppBar={AppBar}
         handleDrawerOpen={handleDrawerOpen}
         palettes={props.palettes}
         colors={colors}

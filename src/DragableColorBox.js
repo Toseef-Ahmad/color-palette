@@ -36,7 +36,7 @@ const styles = {
 };
 
 const DragableColorBox = SortableElement((props) => {
-  console.log(props);
+  
   return (
     <>
       <div className={props.classes.root}>

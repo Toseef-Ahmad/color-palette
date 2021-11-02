@@ -16,13 +16,17 @@ export default function App() {
     return palettes.find((palette) => palette.id === id);
   };
 
+  const deletePalette = (id) => {
+    setPalettes(() => palettes.filter(palette => palette.id !== id));
+  }
+
   const savePalette = (newPalette) => {
     setPalettes((oldPalettes) => [...oldPalettes, newPalette]);
   };
 
   React.useEffect(() => {
     syncLocalStorage();
-  });
+  }, [palettes]);
 
   const syncLocalStorage = () => {
     window.localStorage.setItem('palettes', JSON.stringify(palettes));
@@ -46,7 +50,7 @@ export default function App() {
           exact
           path="/"
           render={(routeProps) => (
-            <PaletteList palette={palettes} {...routeProps} />
+            <PaletteList palette={palettes} {...routeProps} deletePalette={deletePalette} />
           )}
         ></Route>
         <Route

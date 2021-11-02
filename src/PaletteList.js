@@ -6,7 +6,7 @@ import styles from './styles/PaletteListStyles';
 // import './PaletteList.css';
 
 const PaletteList = (props) => {
-  const { palette, classes } = props;
+  const { palette, classes, deletePalette } = props;
   console.log(props.palette);
   const goToPalette = (id) => {
     props.history.push(`/palette/${id}`);
@@ -22,7 +22,12 @@ const PaletteList = (props) => {
           <div className={classes.palette}>
             {palette.map((p) => {
               return (
-                <MiniPalette {...p} handleClick={() => goToPalette(p.id)} />
+                <MiniPalette
+                  {...p}
+                  handleClick={() => goToPalette(p.id)}
+                  handleDelete={deletePalette}
+                  id={p.id}
+                />
               );
             })}
           </div>

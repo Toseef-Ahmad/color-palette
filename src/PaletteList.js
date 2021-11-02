@@ -7,8 +7,8 @@ import styles from './styles/PaletteListStyles';
 
 const PaletteList = (props) => {
   const { palette, classes } = props;
+  console.log(props.palette);
   const goToPalette = (id) => {
-    console.log(props.history);
     props.history.push(`/palette/${id}`);
   };
   return (

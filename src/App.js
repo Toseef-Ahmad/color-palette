@@ -9,7 +9,8 @@ import SingleColorPalette from './SingleColorPalette';
 import NewColorPalette from './NewColorPalette';
 
 export default function App() {
-  const [palettes, setPalettes] = React.useState(seedColors);
+  const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
+  const [palettes, setPalettes] = React.useState(savedPalettes || seedColors);
 
   const findPalette = (id) => {
     return palettes.find((palette) => palette.id === id);
@@ -19,13 +20,26 @@ export default function App() {
     setPalettes((oldPalettes) => [...oldPalettes, newPalette]);
   };
 
+  React.useEffect(() => {
+    syncLocalStorage();
+  });
+
+  const syncLocalStorage = () => {
+    window.localStorage.setItem('palettes', JSON.stringify(palettes));
+  };
+
   return (
     <div>
       <Switch>
         <Route
+          exact
           path="/palette/new"
           render={(routeParams) => (
-            <NewColorPalette savePalette={savePalette} {...routeParams} palettes={palettes}/>
+            <NewColorPalette
+              savePalette={savePalette}
+              {...routeParams}
+              palettes={palettes}
+            />
           )}
         ></Route>
         <Route

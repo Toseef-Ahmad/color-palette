@@ -2,6 +2,8 @@
 import React from 'react';
 import { withStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import styles from './styles/MiniPaletteStyles';
 
 const MiniPalette = (props) => {
@@ -9,6 +11,13 @@ const MiniPalette = (props) => {
   return (
     <>
       <div className={classes.root} onClick={props.handleClick}>
+        <div className={classes.delete}>
+          <DeleteIcon
+            className={classes.deleteIcon}
+            style={{ transition: 'all 0.3s ease-in-out' }}
+            onClick={() => console.log('Her')}
+          />
+        </div>
         <div className={classes.color}>
           {colors.map((c) => (
             <div

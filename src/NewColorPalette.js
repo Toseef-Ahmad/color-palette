@@ -128,10 +128,11 @@ function NewColorPalette(props) {
     setColors(() => [...colors, { ...randomColor, id: uuidv4() }]);
   };
 
-  const savePalette = (paletteName) => {
+  const savePalette = ({ name, emoji }) => {
     const newPalette = {
-      paletteName: paletteName,
-      id: paletteName.toLowerCase().replace(/ /g, '-'),
+      paletteName: name,
+      id: name.toLowerCase().replace(/ /g, '-'),
+      emoji: emoji,
       colors: colors,
     };
     props.savePalette(newPalette);

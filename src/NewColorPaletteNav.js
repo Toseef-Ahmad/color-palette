@@ -10,6 +10,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@mui/styles';
 import NewColorPaletteMetaForm from './NewColorPaletteMetaForm';
+import 'emoji-mart/css/emoji-mart.css';
 
 const drawerWidth = 300;
 
@@ -60,21 +61,6 @@ const NewColorPaletteNav = ({
 }) => {
   const [paletteName, setPaletteName] = React.useState('');
 
-  const handleSavePalette = (paletteName) => {
-    const isUnique = palettes.every(
-      (palette) => palette.paletteName !== paletteName
-    );
-
-    if (isUnique && paletteName !== '') {
-      if (colors.length !== 0) {
-        savePalette(paletteName);
-      } else {
-        alert('Palette is Empty');
-      }
-    } else {
-      alert('Chose Unique Palette Name');
-    }
-  };
   return (
     <>
       <div>
@@ -96,8 +82,9 @@ const NewColorPaletteNav = ({
           </Toolbar>
           <div className={classes.navBarButtons}>
             <NewColorPaletteMetaForm
-              paletteName={paletteName}
-              handleSavePalette={handleSavePalette}
+              palettes={palettes}
+              colors={colors}
+              savePalette={savePalette}
             />
           </div>
         </AppBar>

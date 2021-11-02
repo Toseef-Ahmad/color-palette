@@ -7,18 +7,48 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Link } from 'react-router-dom';
+import { Picker } from 'emoji-mart';
 
 export default function NewColorPaletteMetaForm(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [paletteName, setPaletteName] = React.useState('');
-  const { handleSavePalette} = props;
+  const [isEmoji, setIsEmoji] = React.useState(false);
+  const [isForm, setIsForm] = React.useState(false);
+
+  const { palettes, colors, savePalette } = props;
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setIsForm(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setIsForm(false);
+  };
+
+  const handleClickOpenEmojiPicker = () => {
+    setIsEmojy(true);
+    setIsForm(false);
+  }
+
+  const handleClickCloseEmoji = () => {
+    setIsEmoji(false);
+  }
+
+  const handleSavePalette = () => {
+    const isUnique = palettes.every(
+      (palette) => palette.paletteName !== paletteName
+    );
+
+    if (isUnique && paletteName !== '') {
+      if (colors.length !== 0) {
+        setIsForm(false);
+        setIsEmoji(true);
+      } else {
+        alert('Palette is Empty');
+      }
+    } else {
+      alert('Chose Unique Palette Name');
+    }
   };
 
   return (
@@ -29,7 +59,10 @@ export default function NewColorPaletteMetaForm(props) {
       <Button variant="contained" onClick={handleClickOpen} >
             SAVE PALETTE
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={isEmoji} onClose={handleClickCloseEmoji}>
+        <Picker onSelect={(emojiObj) => savePalette({name: paletteName, emoji: emojiObj.native})}/>
+      </Dialog>
+      <Dialog open={isForm} onClose={handleClose}>
         <DialogTitle>Chose A Palette Name</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -49,7 +82,7 @@ export default function NewColorPaletteMetaForm(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={() => handleSavePalette(paletteName)}>SAVE</Button>
+          <Button onClick={handleSavePalette}>SAVE</Button>
         </DialogActions>
       </Dialog>
     </div>

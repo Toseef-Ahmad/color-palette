@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 
 export default function NewColorPaletteMetaForm(props) {
   const [open, setOpen] = React.useState(false);
+  const [paletteName, setPaletteName] = React.useState('');
+  const { handleSavePalette} = props;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,46 +21,35 @@ export default function NewColorPaletteMetaForm(props) {
     setOpen(false);
   };
 
-  const handleSavePalette = () => {
-    props.handleSavePalette();
-    handleClickOpen();
-  }
-
   return (
     <div>
       <Button variant="contained" color="error">
             <Link to="/">GO BACK</Link>
       </Button>
-      <Button variant="contained" onClick={handleSavePalette}>
+      <Button variant="contained" onClick={handleClickOpen} >
             SAVE PALETTE
-          </Button>
+      </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Chose A Palette Name</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            Please enter a name for you new Beautiful palette, name should be unique.!
           </DialogContentText>
-          <TextField
-            variant="filled"
-            id="filled-basic"
-            label="Enter Palette Name"
-            value={props.paletteName}
-            onChange={() => setPaletteName(event.target.value)}
-          ></TextField>
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
             variant="standard"
-          />
+            id="filled-basic"
+            label="Enter Palette Name"
+            type="text"
+            fullWidth
+            value={paletteName}
+            onChange={() => setPaletteName(event.target.value)}
+          ></TextField>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={() => handleSavePalette(paletteName)}>SAVE</Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -60,7 +60,7 @@ const NewColorPaletteNav = ({
 }) => {
   const [paletteName, setPaletteName] = React.useState('');
 
-  const handleSavePalette = () => {
+  const handleSavePalette = (paletteName) => {
     const isUnique = palettes.every(
       (palette) => palette.paletteName !== paletteName
     );

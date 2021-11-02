@@ -15,16 +15,16 @@ export default {
       transition: '200ms',
     },
     [sizes.down('lg')]: {
-      width: '25%',
-      height: (props) => props.height === '25%' && '20%',
-    },
-    [sizes.down('xs')]: {
-      width: '100%',
-      height: (props) => (props.height === '25%' ? '10%' : '50%'),
+      width: '20%',
+      height: (props) => props.height === '20%' && '50%',
     },
     [sizes.down('md')]: {
       width: '50%',
-      height: (props) => (props.height === '25%' ? '10%' : '50%'),
+      height: (props) => (props.height === '25%' ? '10%' : '20%'),
+    },
+    [sizes.down('xs')]: {
+      width: '100%',
+      height: (props) => (props.height === '25%' ? '5%' : '10%'),
     },
   },
   boxContent: {

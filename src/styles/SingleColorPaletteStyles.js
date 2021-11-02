@@ -21,6 +21,14 @@ export default {
     marginBottom: '-4px',
     opacity: 1,
     backgroundColor: 'black',
+    [sizes.down('lg')]: {
+      height: '50%',
+      width: '20%',
+    },
+    [sizes.down('md')]: {
+      height: '20%',
+      width: '50%',
+    },
     [sizes.down('xs')]: {
       height: '10%',
       width: '100%',

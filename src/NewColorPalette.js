@@ -20,44 +20,14 @@ import { arrayMove } from 'react-sortable-hoc';
 import NewColorPaletteNav from './NewColorPaletteNav';
 import NewColorPaletteColorPicker from './NewColorPaletteColorPicker';
 import { withStyles } from '@mui/styles';
+import {
+  Main,
+  ColorPickerContainer,
+  DrawerHeader,
+  ColorsList,
+} from './styles/NewColorPaletteStyles';
 
 const drawerWidth = 300;
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
-
-const ColorPickerContainer = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-});
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}));
 
 const styles = {
   colorPickerContainer: {
@@ -75,10 +45,6 @@ const styles = {
     },
   },
 };
-
-const ColorsList = styled('div')({
-  height: 'calc(100vh - 16vh)',
-});
 
 function NewColorPalette(props) {
   const theme = useTheme();

@@ -11,25 +11,8 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@mui/styles';
 import NewColorPaletteMetaForm from './NewColorPaletteMetaForm';
 import 'emoji-mart/css/emoji-mart.css';
-
+import styles from './styles/NewColorPaletteNavStyles';
 const drawerWidth = 300;
-
-const styles = {
-  navBarButtons: {
-    display: 'flex',
-    height: 64,
-    alignItems: 'center',
-    // justifyContent: 'space-between',
-    padding: 10,
-    '& button': {
-      margin: 10,
-    },
-    '& a': {
-      textDecoration: 'none',
-      color: 'white',
-    },
-  },
-};
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',

@@ -9,7 +9,7 @@ import styles from './styles/ColorBoxStyles';
 const ColorBox = (props) => {
   const [isCopyed, setIsCopyed] = useState(false);
   const isDark = chroma(props.color.hex).luminance() > 0.5;
-  console.log(isDark);
+
   const styles = {
     box: {
       backgroundColor: props.color.hex,

@@ -1,3 +1,4 @@
+import sizes from './sizes';
 export default {
   container: {
     display: 'flex',
@@ -47,13 +48,16 @@ export default {
       border: 'none',
       outline: 'none',
     },
+    [sizes.down('xs')]: {
+      width: '100px',
+    },
   },
 
   selectContainer: {
-    width: '30%',
+    width: '20%',
     padding: '10px 10px',
-    position: 'absolute',
-    left: '1100px',
-    // marginLeft: 'auto',
+    position: 'relative',
+    // left: '1100px',
+    marginLeft: 'auto',
   },
 };

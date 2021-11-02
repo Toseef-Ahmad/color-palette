@@ -87,7 +87,7 @@ export default {
   },
   showOverly: {
     opacity: 1,
-    transform: 'scale(10)',
+    transform: 'scale(50)',
     zIndex: 10,
     position: 'absolute',
     overflow: 'hidden',
@@ -116,6 +116,9 @@ export default {
       padding: 30,
       fontSize: 50,
       textTransform: 'uppercase',
+      [sizes.down('xs')]: {
+        fontSize: '5rem',
+      },
     },
     '& p': {
       fontWeight: 100,

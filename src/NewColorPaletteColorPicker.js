@@ -4,20 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from 'uuid';
 import { withStyles } from '@mui/styles';
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    '& button': {
-      marginTop: 10,
-      width: '100%',
-      fontSize: 20,
-      padding: 15,
-    },
-  },
-};
+import styles from './styles/NewColorPaletteColorPickerStyles';
 
 const NewColorPaletteColorPicker = withStyles(styles)((props) => {
   const [color, setColor] = React.useState('maroon');

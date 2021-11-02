@@ -1,7 +1,8 @@
 export default {
   root: {
     backgroundColor: 'blue',
-    height: '100vh',
+    height: 'calc(100vh)',
+    overflow: 'auto',
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
@@ -20,12 +21,15 @@ export default {
     width: '100%',
     justifyContent: 'space-between',
     color: 'white',
+    padding: 10,
+
     '& a': {
+      fontSize: 20,
       color: 'white',
       textDecoration: 'none',
       alignItems: 'center',
       marginTop: 4,
-    }
+    },
   },
   palette: {
     boxSizing: 'border-box',

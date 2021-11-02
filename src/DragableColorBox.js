@@ -9,10 +9,11 @@ const styles = {
     display: 'inline-block',
     margin: '0 auto',
     width: '20%',
-    height: '25%',
+    height: '26.5%',
     position: 'relative',
     cursor: 'pointer',
     marginBottom: '-7px',
+
     '&:hover svg': {
       color: 'white',
       transform: 'scale(2)',
@@ -21,7 +22,7 @@ const styles = {
   boxContent: {
     position: 'absolute',
     width: '100%',
-    left: '0px',
+    left: '-2px',
     bottom: '0px',
     padding: '10px',
     letterSpacing: '1px',

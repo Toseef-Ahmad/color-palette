@@ -3,6 +3,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -12,6 +13,7 @@ import { withStyles } from '@mui/styles';
 import NewColorPaletteMetaForm from './NewColorPaletteMetaForm';
 import 'emoji-mart/css/emoji-mart.css';
 import styles from './styles/NewColorPaletteNavStyles';
+
 const drawerWidth = 300;
 
 const AppBar = styled(MuiAppBar, {
@@ -57,7 +59,7 @@ const NewColorPaletteNav = ({
               edge="start"
               sx={{ mr: 2, ...(open && { display: 'none' }) }}
             >
-              <MenuIcon />
+              <AddToPhotosIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
               COLOR PALETTE

@@ -54,5 +54,6 @@ export default {
     padding: '10px 10px',
     position: 'absolute',
     left: '1100px',
+    // marginLeft: 'auto',
   },
 };

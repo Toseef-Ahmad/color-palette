@@ -1,4 +1,6 @@
 import chroma from 'chroma-js';
+import sizes from './sizes';
+
 export default {
   colorBox: {
     display: 'inline-block',
@@ -11,6 +13,18 @@ export default {
     '&:hover button': {
       opacity: 1,
       transition: '200ms',
+    },
+    [sizes.down('lg')]: {
+      width: '25%',
+      height: (props) => props.height === '25%' && '20%',
+    },
+    [sizes.down('xs')]: {
+      width: '100%',
+      height: (props) => (props.height === '25%' ? '10%' : '50%'),
+    },
+    [sizes.down('md')]: {
+      width: '50%',
+      height: (props) => (props.height === '25%' ? '10%' : '50%'),
     },
   },
   boxContent: {
@@ -27,6 +41,8 @@ export default {
       chroma(props.color.hex).luminance() > 0.5 ? 'black' : 'white',
   },
   seeMore: {
+    position: 'relative',
+    zIndex: 1,
     background: 'rgba(255, 255, 255, 0.3)',
     border: 'none',
     color: (props) =>
@@ -37,7 +53,7 @@ export default {
     height: '30px',
     position: 'absolute',
     marginLeft: '80%',
-    top: '117px',
+    // top: '117px',
     textTransform: 'uppercase',
     lineHeight: '30px',
   },

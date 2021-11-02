@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default {
   container: {
     height: '100vh',
@@ -19,6 +21,10 @@ export default {
     marginBottom: '-4px',
     opacity: 1,
     backgroundColor: 'black',
+    [sizes.down('xs')]: {
+      height: '10%',
+      width: '100%',
+    },
   },
   goBack: {
     width: '100px',

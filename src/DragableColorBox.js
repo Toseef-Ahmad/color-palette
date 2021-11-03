@@ -27,23 +27,36 @@ const styles = {
 
     [sizes.down('xs')]: {
       width: '100%',
-      height: '10%',
+      height: '5%',
+      '&:hover svg': {
+        transform: 'scale(1.2)',
+      },
     },
   },
   boxContent: {
     position: 'absolute',
     width: '100%',
-    left: '-2px',
-    bottom: '0px',
-    padding: '10px',
+    left: '0px',
+    bottom: 0,
+    // top: 0,
+    // paddingLeft: 10,
     letterSpacing: '1px',
     textTransform: 'uppercase',
     fontSize: '12px',
     display: 'flex',
     justifyContent: 'space-between',
+    '& span': {
+      paddingLeft: 10,
+      paddingTop: 10,
+    }
   },
   deleteIcon: {
     transition: 'all .3s ease-in-out',
+    marginRight: 10,
+    marginBottom: 10,
+    [sizes.down('xs')]: {
+      marginBottom: 0,
+    },
   },
 };
 

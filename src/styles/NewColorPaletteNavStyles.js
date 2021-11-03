@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default {
   navBarButtons: {
     display: 'flex',
@@ -11,6 +13,18 @@ export default {
     '& a': {
       textDecoration: 'none',
       color: 'white',
+    },
+    [sizes.down('md')]: {
+      '& button': {
+        padding: 5,
+        marginRight: 3,
+      },
+    },
+    [sizes.down('xs')]: {
+      '& button': {
+        padding: 2,
+        margin: 0,
+      },
     },
   },
 };

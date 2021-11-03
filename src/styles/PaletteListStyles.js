@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default {
   root: {
     backgroundColor: 'blue',
@@ -8,7 +10,7 @@ export default {
     justifyContent: 'center',
   },
   container: {
-    width: '50%',
+    width: '80%',
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column',
@@ -24,11 +26,16 @@ export default {
     padding: 10,
 
     '& a': {
+      width: 200,
       fontSize: 20,
       color: 'white',
       textDecoration: 'none',
       alignItems: 'center',
       marginTop: 4,
+      [sizes.down('md')]: {
+        fontSize: 16,
+        // width:
+      },
     },
   },
   palette: {
@@ -37,5 +44,13 @@ export default {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 30%)',
     gridGap: '5%',
+    [sizes.down('md')]: {
+      gridTemplateColumns: 'repeat(2, 60%)',
+      gridGap: '2%',
+    },
+    [sizes.down('xs')]: {
+      gridTemplateColumns: 'repeat(1, 100%)',
+      gridGap: '1%',
+    },
   },
 };

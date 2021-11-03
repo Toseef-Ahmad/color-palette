@@ -4,7 +4,7 @@ import bg from './bg.js';
 export default {
   root: {
     // backgroundColor: 'blue',
-    backgroundColor: 'blue',
+    backgroundColor: '#353BAA',
     backgroundImage: `url("${bg.url}")`,
     // backgroundAttachment: 'fixed',
     height: 'calc(100vh)',
@@ -33,11 +33,13 @@ export default {
     // fontSize: 10,
     '& a': {
       width: 200,
+      textAlign: 'right',
       fontSize: 20,
       color: 'white',
       textDecoration: 'none',
       alignItems: 'center',
       marginTop: 4,
+      
       [sizes.down('xs')]: {
         fontSize: 16,
       },

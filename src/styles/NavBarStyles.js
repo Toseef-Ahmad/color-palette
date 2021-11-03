@@ -31,6 +31,10 @@ export default {
     fontFamily: 'Roboto, sans-serif',
     fontWeight: 100,
     fontSize: '14px',
+    [sizes.down('xs')]: {
+      left: 155,
+      fontSize: 13,
+    },
   },
   slider: {
     width: '30%',
@@ -49,7 +53,7 @@ export default {
       outline: 'none',
     },
     [sizes.down('xs')]: {
-      width: '100px',
+      left: 200,
     },
   },
 

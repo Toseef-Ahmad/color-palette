@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import { withStyles } from '@mui/styles';
 import styles from './styles/PaletteListStyles';
+
 // import './PaletteList.css';
 
 const PaletteList = (props) => {
   const { palette, classes, deletePalette } = props;
-  console.log(props.palette);
   const goToPalette = (id) => {
     props.history.push(`/palette/${id}`);
   };

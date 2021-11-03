@@ -29,7 +29,8 @@ export default {
     marginTop: 'auto',
     justifyContent: 'space-between',
     color: 'white',
-    padding: 10,
+    padding: '10px 0 10px 0',
+    // fontSize: 10,
     '& a': {
       width: 200,
       fontSize: 20,
@@ -40,6 +41,11 @@ export default {
       [sizes.down('xs')]: {
         fontSize: 16,
       },
+    },
+    '& h1': {
+      width: 200,
+      margin: '6px 0',
+      fontSize: 17,
     },
   },
   palette: {

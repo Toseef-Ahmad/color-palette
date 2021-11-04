@@ -20,6 +20,8 @@ import { arrayMove } from 'react-sortable-hoc';
 import NewColorPaletteNav from './NewColorPaletteNav';
 import NewColorPaletteColorPicker from './NewColorPaletteColorPicker';
 import { withStyles } from '@mui/styles';
+import seedColors from './seedColors';
+
 import {
   Main,
   ColorPickerContainer,
@@ -50,11 +52,38 @@ function NewColorPalette(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('purple');
-  const [colors, setColors] = React.useState(
-    props.palettes[Math.floor(Math.random() * props.palettes.length)].colors
-  );
+  const [colors, setColors] = React.useState([]);
   const [colorName, setColorName] = React.useState('');
-  const { classes } = props;
+  const { classes, palettes } = props;
+
+  React.useEffect(() => {
+    setColors(() => loadInitialColors());
+    console.log(colors);
+  }, []);
+
+  const loadInitialColors = () => {
+    const colorSource = palettesOrSeedColors();
+    return colorSource[Math.floor(Math.random() * colorSource.length)].colors;
+  };
+
+  const palettesOrSeedColors = () => {
+    return palettes.length > 0 ? palettes : seedColors;
+  };
+
+  const addRandomColor = () => {
+    const colorSource = palettesOrSeedColors();
+    return (rand = () => {
+      const randomPalette =
+        colorSource[Math.floor(Math.random() * colorSource.length)].colors;
+      const randomColor =
+        randomPalette[Math.floor(Math.random() * randomPalette.length)];
+      setColors(() => [...colors, { ...randomColor, id: uuidv4() }]);
+    });
+  };
+
+  const randomHelper = (rand) => {
+    return Math.floor(Math.random() * rand);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -84,14 +113,6 @@ function NewColorPalette(props) {
 
   const clearPalette = () => {
     setColors([]);
-  };
-
-  const addRandomColor = () => {
-    const randomPalette =
-      props.palettes[Math.floor(Math.random() * props.palettes.length)].colors;
-    const randomColor =
-      randomPalette[Math.floor(Math.random() * randomPalette.length)];
-    setColors(() => [...colors, { ...randomColor, id: uuidv4() }]);
   };
 
   const savePalette = ({ name, emoji }) => {
@@ -141,11 +162,8 @@ function NewColorPalette(props) {
             <Button variant="contained" color="error" onClick={clearPalette}>
               CLEAR PALETTE
             </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={addRandomColor}
-            >
+
+            <Button variant="contained" color="primary" onClick={addRandomColor}>
               RANDOM PALETTE
             </Button>
           </div>

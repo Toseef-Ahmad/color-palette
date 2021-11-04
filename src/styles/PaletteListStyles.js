@@ -2,6 +2,22 @@ import sizes from './sizes';
 import bg from './bg.js';
 
 export default {
+  '@global': {
+    '.fade-exit': {
+      opacity: 1,
+    },
+    '.fade-exit-active': {
+      opacity: 0,
+      transition: 'opacity 500ms ease-out',
+    },
+  },
+  // '.fade-exit': {
+  //   opacity: 1,
+  // },
+  // '.fade-exit-active': {
+  //   opacity: 0,
+  //   transition: 'opacity 500ms ease-out',
+  // },
   root: {
     // backgroundColor: 'blue',
     backgroundColor: '#353BAA',
@@ -39,7 +55,7 @@ export default {
       textDecoration: 'none',
       alignItems: 'center',
       marginTop: 4,
-      
+
       [sizes.down('xs')]: {
         fontSize: 16,
       },

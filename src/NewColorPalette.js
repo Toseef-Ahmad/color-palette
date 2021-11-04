@@ -163,7 +163,11 @@ function NewColorPalette(props) {
               CLEAR PALETTE
             </Button>
 
-            <Button variant="contained" color="primary" onClick={addRandomColor}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={addRandomColor}
+            >
               RANDOM PALETTE
             </Button>
           </div>

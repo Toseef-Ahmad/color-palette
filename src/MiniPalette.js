@@ -7,10 +7,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import styles from './styles/MiniPaletteStyles';
 
 const MiniPalette = (props) => {
-  const { classes, paletteName, colors, id, emoji, handleDelete } = props;
+  const { classes, paletteName, colors, id, emoji, handleDelete, openDialog } =
+    props;
   const deletePalette = (e) => {
     e.stopPropagation();
-    handleDelete(id);
+    // handleDelete(id);
+    openDialog(id);
   };
   return (
     <>

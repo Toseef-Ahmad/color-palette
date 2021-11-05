@@ -1,7 +1,14 @@
-h1, p {
+h1,
+p {
   font-family: Lato;
 }
 
 * {
   margin: 0;
+}
+
+.page {
+  height: 100vh;
+  position: fixed;
+  width: 100%;
 }

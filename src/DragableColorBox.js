@@ -49,7 +49,7 @@ const styles = {
     '& span': {
       paddingLeft: 10,
       paddingTop: 10,
-    }
+    },
   },
   deleteIcon: {
     transition: 'all .3s ease-in-out',

@@ -1,4 +1,5 @@
 import { styled, useTheme } from '@mui/material/styles';
+import sizes from './sizes';
 
 const drawerWidth = 300;
 
@@ -11,6 +12,9 @@ export const Main = styled('main', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  [sizes.down('xs')]: {
+    marginTop: 9,
+  },
   marginLeft: `-${drawerWidth}px`,
   ...(open && {
     transition: theme.transitions.create('margin', {

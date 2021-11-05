@@ -13,6 +13,7 @@ import { withStyles } from '@mui/styles';
 import NewColorPaletteMetaForm from './NewColorPaletteMetaForm';
 import 'emoji-mart/css/emoji-mart.css';
 import styles from './styles/NewColorPaletteNavStyles';
+import sizes from './styles/sizes';
 
 const drawerWidth = 300;
 
@@ -23,6 +24,9 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  [sizes.down('xs')]: {
+    
+  },
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',

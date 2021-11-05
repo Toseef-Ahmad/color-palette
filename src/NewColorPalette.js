@@ -72,13 +72,11 @@ function NewColorPalette(props) {
 
   const addRandomColor = () => {
     const colorSource = palettesOrSeedColors();
-    return (rand = () => {
-      const randomPalette =
-        colorSource[Math.floor(Math.random() * colorSource.length)].colors;
-      const randomColor =
-        randomPalette[Math.floor(Math.random() * randomPalette.length)];
-      setColors(() => [...colors, { ...randomColor, id: uuidv4() }]);
-    });
+    const randomPalette =
+      colorSource[Math.floor(Math.random() * colorSource.length)].colors;
+    const randomColor =
+      randomPalette[Math.floor(Math.random() * randomPalette.length)];
+    setColors(() => [...colors, { ...randomColor, id: uuidv4() }]);
   };
 
   const randomHelper = (rand) => {
@@ -183,6 +181,7 @@ function NewColorPalette(props) {
             handleClick={handleClick}
             axis="xy"
             onSortEnd={onSortEnd}
+            distance={20}
           />
         </ColorsList>
       </Main>

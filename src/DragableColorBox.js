@@ -18,6 +18,7 @@ const styles = {
     '&:hover svg': {
       color: 'white',
       transform: 'scale(2)',
+      transition: 'all .3s ease-in-out',
     },
 
     [sizes.down('md')]: {
